@@ -1,0 +1,105 @@
+/* Neon purple theme on black - clean, responsive, no frameworks */
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+  --bg:#06060a;
+  --card:#0e0b14;
+  --neon:#9b5cff;
+  --neon-2:#6f34ff;
+  --muted:#9aa1b2;
+  --glass: rgba(255,255,255,0.03);
+  --radius:12px;
+  --maxw:1100px;
+  --transition: 260ms cubic-bezier(.2,.9,.2,1);
+}
+
+html,body{height:100%}
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(123,63,255,0.08), transparent),
+              radial-gradient(900px 400px at 90% 90%, rgba(107,33,255,0.06), transparent),
+              var(--bg);
+  color: #e6e9ee;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Layout */
+.container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+.nav{
+  position:fixed;left:0;right:0;top:0;backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(10,8,15,0.6), rgba(10,8,15,0.25));
+  box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+  z-index:1000;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;max-width:var(--maxw);margin:0 auto}
+.brand{font-weight:700;letter-spacing:1px;color:var(--neon);font-size:1.1rem}
+.nav-toggle{display:none;background:none;border:0;gap:6px}
+.nav-toggle span{display:block;width:22px;height:2px;background:linear-gradient(90deg,var(--neon),var(--neon-2));border-radius:2px;transform-origin:center;transition:var(--transition)}
+.nav-menu{display:flex;gap:18px;list-style:none}
+.nav-link{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 6px;border-radius:8px;transition:var(--transition)}
+.nav-link:hover, .nav-link.active{color:var(--neon);box-shadow: inset 0 -2px 0 0 rgba(155,92,255,0.12)}
+
+/* Hero */
+.hero{min-height:92vh;padding-top:88px;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr 380px;gap:40px;align-items:center;max-width:var(--maxw);margin:0 auto;padding:40px 20px}
+.hero-title{font-size:2.6rem;line-height:1;color:#fff;margin-bottom:8px}
+.hero-title .accent{background: linear-gradient(90deg,var(--neon),var(--neon-2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+.hero-subtitle{color:var(--muted);font-weight:600;margin-bottom:14px}
+.hero-desc{color:var(--muted);max-width:50ch;margin-bottom:18px}
+.hero-cta{display:flex;gap:12px}
+.btn{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:#0b0610;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 6px 30px rgba(111,52,255,0.12);transition:transform .2s ease}
+.btn:hover{transform:translateY(-4px)}
+.btn.ghost{background:transparent;border:1px solid rgba(155,92,255,0.14);color:var(--neon)}
+
+/* Portrait */
+.portrait-frame{position:relative;width:320px;height:320px;border-radius:18px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.12));border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 40px rgba(0,0,0,0.6)}
+.portrait-frame img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05)}
+.portrait-frame::after{content:'';position:absolute;inset:0;box-shadow: 0 0 40px rgba(111,52,255,0.18) inset}
+.glow{position:absolute;inset:auto -30% -30% auto;width:220px;height:220px;border-radius:50%;filter:blur(36px);background:radial-gradient(circle, rgba(155,92,255,0.22), rgba(111,52,255,0.08));transform:translate(20%,20%)}
+
+/* Sections */
+.section{padding:64px 0}
+.section.alt{background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+.section-title{font-size:1.6rem;color:#fff;margin-bottom:16px}
+.lead{color:var(--muted);margin-bottom:18px}
+.cards{display:flex;gap:14px;flex-wrap:wrap}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);min-width:220px;flex:1;box-shadow:0 6px 24px rgba(0,0,0,0.6)}
+
+/* Timeline */
+.timeline{list-style:none;padding-left:0;display:flex;flex-direction:column;gap:12px}
+.timeline li{display:flex;flex-direction:column;background:var(--card);padding:12px;border-radius:10px;border-left:4px solid var(--neon);color:var(--muted)}
+
+/* Skills & Projects */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.skill{background:var(--card);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.project{background:var(--card);padding:14px;border-radius:10px;border-top:3px solid var(--neon);color:var(--muted)}
+.tags{margin-top:10px;display:flex;gap:8px}
+.tags span{background:rgba(155,92,255,0.08);padding:6px 8px;border-radius:999px;color:var(--neon);font-weight:600;font-size:.85rem}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.contact-info a{color:var(--neon);text-decoration:none}
+.contact-form label{display:block;margin-bottom:10px}
+.contact-form input, .contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#e8e8ee}
+.contact-form .btn{width:100%}
+
+/* Footer */
+.footer{padding:28px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
+
+/* Scroll top */
+.scroll-top{position:fixed;right:18px;bottom:18px;background:var(--neon);color:#07030a;border-radius:10px;padding:8px 12px;border:0;cursor:pointer;box-shadow:0 8px 30px rgba(111,52,255,0.18)}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr 300px}
+}
+@media (max-width:720px){
+  .hero-grid{grid-template-columns:1fr;gap:18px}
+  .portrait-frame{width:240px;height:240px;margin:0 auto}
+  .nav-menu{position:fixed;left:0;right:0;top:66px;background:linear-gradient(180deg, rgba(10,8,15,0.95), rgba(10,8,15,0.98));flex-direction:column;padding:18px;display:none}
+  .nav-menu.show{display:flex}
+  .nav-toggle{display:flex}
+}
